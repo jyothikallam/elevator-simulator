@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Locus Energy Coding Challenge
 
 This is a very basic scaffold project for you to work in for the elevator simulator assignment.
@@ -37,3 +38,7 @@ We've included a `pom.xml`, which is a file used by [maven][maven] to build the 
 ## Submission
 
 Please clone the repository and deliver your solution in a separate repository (preferably your own). _Do not submit your solution via pull request to this repository._ If you are unfamiliar with GitHub, here is a quick introduction: https://guides.github.com/activities/hello-world/. As an alternative, you can deliver your solution via email in an archive format of your choice, including all project files. The project is due within 1 calendar week.
+=======
+# elevator-simulator
+An elevator-simulator system that runs multiple elevators in a building.
+>>>>>>> 392516d16ed10999e878459319e9e1d3abe1fd78
