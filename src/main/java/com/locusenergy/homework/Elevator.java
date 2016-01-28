@@ -10,6 +10,12 @@ public interface Elevator {
     void requestFloor(int floor);
     
     /**
+     * Requests the Elevator to move to a certain floor. It should move the Elevator depending on the registered request.
+     * 
+     */
+    void moveFloor(int tofloor);
+    
+    /**
      * Returns the internal state of the Elevator.
      */
     boolean isBusy();
