@@ -1,8 +1,11 @@
 package com.locusenergy.homework;
 
 import java.util.Scanner;
+import com.locusenergy.homework.InvalidStateException;
+import com.locusenergy.homework.InvalidRequestException;
 
-public class ElevatorImpl extends InvalidStateException implements Elevator {
+
+public class ElevatorImpl implements Elevator {
 
 	public int currentFloorNumber = 0;
 	private int tofloor;
@@ -21,19 +24,25 @@ public class ElevatorImpl extends InvalidStateException implements Elevator {
 		try {
 		if (tofloor > totalFloors || tofloor < 0) {
 			System.out.println("Invalid Request, Please request a valid floor number \n");
-			//throw new InvalidRequestException();
+			throw new InvalidRequestException();
 		} else {
 			if (currentFloorNumber < tofloor) {
 				direction = 1; // upward direction
-				if (currentFloorNumber > tofloor) {
+			}
+			else if (currentFloorNumber > tofloor) {
 					direction = -1; // downward direction
-				} else
-					direction = 0; // stays in same floor
+			} 
+			else
+			{
+				direction = 0; // stays in same floor
 				throw new InvalidStateException();
 			}
 		}
 	} catch (InvalidStateException e){
 		System.out.println("Requested Floor is not registered with elevator:" + e);
+	} catch (InvalidRequestException e) {
+		System.out.println("Invalid Request: Please choose correct floor number");
+		e.printStackTrace();
 	}
 	}
 	

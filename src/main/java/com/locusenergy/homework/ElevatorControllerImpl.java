@@ -42,10 +42,10 @@ public class ElevatorControllerImpl extends InvalidRequestException implements E
 	}
 
 	public static void main(String args[]) {
-		System.out.println("Enter the total no of floors in the building:\t");
+		System.out.println("Enter the total no of floors in the building:");
 		input = new Scanner(System.in);
 		totalfloors = input.nextInt();
-		System.out.println("\nEnter the no of elevators in the building: \t");
+		System.out.println("Enter the no of elevators in the building:");
 		int noofelevators = input.nextInt();
 		
 		for (int i = 0; i < noofelevators; i++) {
@@ -53,27 +53,30 @@ public class ElevatorControllerImpl extends InvalidRequestException implements E
 			elevArr.add(new ElevatorImpl(totalfloors, 0, 0));
 		}
 		
-		System.out.println("\nEnter your current floor number: \t");
-		int fromfloor = input.nextInt();
-		System.out.println("\nEnter your desired direction of move: \t");
-		int dir = input.nextInt();
-		
-		try {
-			ElevatorImpl ei = (ElevatorImpl) new ElevatorControllerImpl().callElevator(fromfloor, dir);
-			System.out.println("Elevator was requested and is on the way to your floor");
-			
-			System.out.println("\nEnter your desired floor number: \t");
-			int tofloor = input.nextInt();
-			ei.requestFloor(tofloor);
-			ei.direction = dir;
-			
-			ei.moveFloor(tofloor);
-			System.out.println("\nElevator is on the desired floor: \t");
-			ei.currentFloorNumber = tofloor;
-			ei.direction = 0;
-			
-		} catch (InvalidRequestException e) {
-			e.printStackTrace();
-		}	
+		while(true)
+		{
+			System.out.println("Enter your current floor number:");
+			int fromfloor = input.nextInt();
+			System.out.println("Enter your desired direction of move:");
+			int dir = input.nextInt();
+
+			try {
+				ElevatorImpl ei = (ElevatorImpl) new ElevatorControllerImpl().callElevator(fromfloor, dir);
+				ei.direction = dir;
+				System.out.printf("Elevator %d was requested and is on the way to your floor", elevArr.indexOf(ei));
+
+				System.out.println("\nEnter your desired floor number:");
+				int tofloor = input.nextInt();
+				ei.requestFloor(tofloor);
+
+				ei.moveFloor(tofloor);
+				System.out.printf("\nElevator %d is on the desired floor %d", elevArr.indexOf(ei), tofloor);
+				ei.currentFloorNumber = tofloor;
+				ei.direction = 0;
+
+			} catch (InvalidRequestException e) {
+				e.printStackTrace();
+			}	
+		}
 	}
 }
