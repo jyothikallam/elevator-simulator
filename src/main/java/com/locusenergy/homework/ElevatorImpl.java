@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 public class ElevatorImpl extends InvalidStateException implements Elevator {
 
-	private int currentFloorNumber = 0, tofloor, totalFloors;
-	private int direction;
+	public int currentFloorNumber = 0;
+	private int tofloor;
+	private int totalFloors;
+	public int direction;
 
 	ElevatorImpl (int totalFloors, int currentFloorNumber, int direction){
 		this.totalFloors = totalFloors;
