@@ -6,8 +6,10 @@ public interface Elevator {
      * elevator. Therefore, it should not move the Elevator immidiately but just register the request.
      * 
      * Bonus: this method should throw InvalidStateException if the Elevator is NOT busy.
+     * @throws InvalidStateException 
+     * @throws InvalidRequestException 
      */
-    void requestFloor(int floor);
+    void requestFloor(int floor) throws InvalidRequestException, InvalidStateException;
     
     /**
      * Requests the Elevator to move to a certain floor. It should move the Elevator depending on the registered request.

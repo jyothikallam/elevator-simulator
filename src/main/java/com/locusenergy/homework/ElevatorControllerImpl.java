@@ -78,19 +78,22 @@ public class ElevatorControllerImpl implements ElevatorController {
 		// accepting all requests from the user
 		while(true)
 		{
-			System.out.println("Enter your current floor number:");
+			System.out.println("\nEnter your current floor number:");
 			int fromfloor = input.nextInt();
-			System.out.println("Enter your desired direction of move:");
+			System.out.println("\nEnter your desired direction of move:");
 			int dir = input.nextInt();
 
 			try {
 				ElevatorImpl ei = (ElevatorImpl) new ElevatorControllerImpl().callElevator(fromfloor, dir);
 				ei.direction = dir;
-				System.out.printf("Elevator %d was requested and is on the way to your floor", elevArr.indexOf(ei));
+				System.out.printf("\nElevator %d was requested and is on the way to your floor", elevArr.indexOf(ei));
 
 				System.out.println("\nEnter your desired floor number:");
 				int tofloor = input.nextInt();
-				ei.requestFloor(tofloor);
+				try {
+					ei.requestFloor(tofloor);
+				} catch (InvalidStateException e) {
+				}
 
 				ei.moveFloor();
 				System.out.printf("\nElevator %d is on the desired floor %d", elevArr.indexOf(ei), tofloor);

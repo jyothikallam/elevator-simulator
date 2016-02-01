@@ -28,19 +28,27 @@ public class ElevatorImplTest {
 	public void tearDown() throws Exception {
 	}
 
-	//
-	@Test(expected = InvalidRequestException.class)
-	public void negativeRequestFloorValueTest() throws InvalidRequestException {
+	// If the requested floor is less than ground floor
+	@Test (expected = InvalidRequestException.class)
+	public void negativeRequestFloorValueTest() throws InvalidRequestException, InvalidStateException {
 		elv.requestFloor(-1);
 	}
 	
-	@Test(expected = InvalidRequestException.class)
-	public void HighestRequestFloorValueTest() throws InvalidRequestException {
+	// If the requested floor is higher than top floor
+	@Test (expected = InvalidRequestException.class)
+	public void HighestRequestFloorValueTest() throws InvalidRequestException, InvalidStateException {
 		elv.requestFloor(101);
 	}
 	
-	@Test(expected = InvalidStateException.class)
-	public void sameFloorValueTest() throws InvalidStateException {
+	// Tests if the requested floor = current floor
+	@Test (expected = InvalidStateException.class)
+	public void sameFloorValueTest() throws InvalidStateException, InvalidRequestException {
 		elv.requestFloor(0);
+	}
+	
+	// Successful Test
+	@Test
+	public void SuccessfulTest() throws InvalidStateException, InvalidRequestException {
+		elv.requestFloor(4);
 	}
 }

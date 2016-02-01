@@ -38,9 +38,9 @@ public class ElevatorImpl implements Elevator {
 	   * @param floor - The floor number to which user wants to go.
 	   */
 	@Override
-	public void requestFloor(int floor) {
+	public void requestFloor(int floor) throws InvalidRequestException, InvalidStateException {
 		this.tofloor = floor;
-		try {
+		//try {
 		if (tofloor > totalFloors || tofloor < 0) {
 			throw new InvalidRequestException("Enter a vaild floor number");
 		} else {
@@ -56,11 +56,11 @@ public class ElevatorImpl implements Elevator {
 				throw new InvalidStateException("Elevator is not busy, it is in your floor");
 			}
 		}
-	} catch (InvalidStateException e){
-		System.out.println(e);
-	} catch (InvalidRequestException e) {
-		System.out.println(e);
-	}
+//	} catch (InvalidStateException e){
+//		System.out.println(e);
+//	} catch (InvalidRequestException e) {
+//		System.out.println(e);
+//	}
 	}
 	
 	/**
