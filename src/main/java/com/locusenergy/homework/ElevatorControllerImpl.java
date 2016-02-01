@@ -24,6 +24,11 @@ public class ElevatorControllerImpl extends InvalidRequestException implements E
 			throw new InvalidRequestException();
 		}
 		
+		if(((fromFloor == totalfloors) && (direction == 1)) || ((fromFloor == 0) && (direction == -1)) || (direction == 0))
+		{
+			throw new InvalidRequestException();
+		}
+		
 		int distance = Math.abs(((ElevatorImpl) elevArr.get(0)).currentFloor() - fromFloor);
 		int idx = 0;
 		
