@@ -30,7 +30,6 @@ public class ElevatorControllerImplTest {
 	public void tearDown() throws Exception {
 	}
 
-	//
 	@Test(expected = InvalidRequestException.class)
 	public void negativeFromFloorValueTest() throws InvalidRequestException {
 		elv.callElevator(-1, 1);
@@ -54,6 +53,19 @@ public class ElevatorControllerImplTest {
 	@Test(expected = InvalidRequestException.class)
 	public void RemainInSameFloorTest() throws InvalidRequestException {
 		elv.callElevator(0, 0);
+	}
+	
+	@Test
+	public void MoreRequestThanElevatorTest() throws InvalidRequestException  {
+		ElevatorImpl e1 = new ElevatorImpl(100, 1, 1);
+		ElevatorImpl e2 = new ElevatorImpl(100, 2 , 1);
+		
+		ElevatorControllerImpl.elevArr.add(e1);
+		ElevatorControllerImpl.elevArr.add(e2);
+		
+		elv.callElevator(0, 1);
+		elv.callElevator(2, 1);
+		elv.callElevator(100,-1);
 	}
 
 }

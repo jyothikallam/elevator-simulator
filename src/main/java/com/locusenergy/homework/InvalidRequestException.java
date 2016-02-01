@@ -2,6 +2,7 @@ package com.locusenergy.homework;
 
 public class InvalidRequestException extends Exception {
 		
-		 InvalidRequestException() {
+		 InvalidRequestException(String s) {
+			 super(s);
 		}
 	}

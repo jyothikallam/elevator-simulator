@@ -13,7 +13,7 @@ public interface Elevator {
      * Requests the Elevator to move to a certain floor. It should move the Elevator depending on the registered request.
      * 
      */
-    void moveFloor(int tofloor);
+    void moveFloor();
     
     /**
      * Returns the internal state of the Elevator.
